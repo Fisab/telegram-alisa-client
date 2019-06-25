@@ -22,10 +22,7 @@ class Methods:
         })
 
     def __sort_important_dialogs(self):
-        result = []
-        for dialog in self.dialogs:
-            if isinstance(dialog.entity, telethon_types.User) and Tools.get_important_user_by_id(dialog.entity.id):
-                result.append(dialog)
+        result = [dialog for dialog in self.dialogs if isinstance(dialog.entity, telethon_types.User) and Tools.get_important_user_by_id(dialog.entity.id)]
         return result
 
     def __sort_important_chats(self):
